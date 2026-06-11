@@ -2,8 +2,12 @@ module testbench;
     reg a, b;
     wire y;
 
-    xor_using_nand uut (.a(a), .b(b), .y(y));
+    xor_behavioral (.a(a), .b(b), .y(y));
 
+     initial begin
+        $dumpfile("output.vcd");
+        $dumpvars;
+    end
     initial begin
         $monitor("a=%b b=%b y=%b", a, b, y);
         #10 a=0; b=0;
